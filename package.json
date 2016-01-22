@@ -1,0 +1,25 @@
+{
+  "name": "nativescript-listview-header",
+  "main": "nativescript-listview-header.js",
+  "nativescript": {
+    "platforms": {
+      "ios": "1.0.0"
+    }
+  },
+  "version": "0.1.0",
+  "description": "A ios UITableView plugin for nativescript which allows you to add table headerview",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:rajivnarayana/nativescript-listview-header.git"
+  },
+  "keywords": [
+    "Nativescript",
+    "UITableView",
+    "header"
+  ],
+  "author": "Rajiv Narayana <rajivnarayana@gmail.com> (https://github.com/rajivnarayana)",
+  "license": "MIT",
+  "devDependencies": {
+    "tns-core-modules": "^1.5.1"
+  }
+}

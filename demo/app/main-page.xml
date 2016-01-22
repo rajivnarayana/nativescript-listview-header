@@ -1,0 +1,4 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" xmlns:tools="nativescript-listview-header">
+    <tools:ListViewWithHeader items="{{items}}" loaded="onListViewLoaded" rowHeight="44">
+    </tools:ListViewWithHeader>
+</Page>
