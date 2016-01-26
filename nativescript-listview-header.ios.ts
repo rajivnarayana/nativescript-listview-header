@@ -26,7 +26,10 @@ export class ListViewWithHeader extends ListView {
 			this._addView(view);
 			this.ios.tableHeaderView = view.ios;
 			view.ios.frame = CGRectMake(0,0,this.ios.bounds.size.width, 1);
-		}
+		} else {
+            this._removeView(this._tableHeaderView);
+            this.ios.tableHeaderView = null;
+        }
 		this._tableHeaderView = view;
 	}
 	

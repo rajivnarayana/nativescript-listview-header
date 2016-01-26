@@ -10,4 +10,8 @@ exports.pageLoaded = pageLoaded;
 exports.onListViewLoaded = function(args) {
     var listView = args.object;
     listView.tableHeaderView = new searchBarModule.SearchBar();
+    
+    setTimeout(function() {
+        listView.tableHeaderView = null;
+    }, 3000);
 }
