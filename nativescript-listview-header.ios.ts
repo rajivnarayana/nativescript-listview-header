@@ -1,8 +1,9 @@
 import { ListView, knownTemplates } from "ui/list-view";
 import { View } from "ui/core/view";
-import { Property as DependencyObservableProperty } from "ui/core/dependency-observable";
-import { PropertyMetadata as ProxyPropertyMetaData } from "ui/core/proxy";
+import { Property as DependencyObservableProperty, PropertyChangeData } from "ui/core/dependency-observable";
+import { PropertyMetadata } from "ui/core/proxy";
 import { layout } from "utils/utils";
+import { PropertyMetadataSettings } from "ui/core/dependency-observable";
 
 exports.knownTemplates = knownTemplates;
 
@@ -10,11 +11,11 @@ export class ListViewWithHeader extends ListView {
 	
 	private _tableHeaderView : View;
 	
-	public static showDisclousureIndictorProperty = new DependencyObservableProperty("showDisclosureIndicator", "SearchableListView", new ProxyPropertyMetaData(false));
-	
-	constructor() {
-		super();
-	}
+	public static showDisclousureIndictorProperty = new DependencyObservableProperty("showDisclosureIndicator", "ListViewWithHeader", 
+        new PropertyMetadata(false, PropertyMetadataSettings.None, null, null, (data : PropertyChangeData) => {
+            let listView = <ListViewWithHeader>data.object;
+            listView.ios.reloadData();
+        }));
 	
 	get tableHeaderView() : View {
 		return this._tableHeaderView;
@@ -39,7 +40,7 @@ export class ListViewWithHeader extends ListView {
 	
 	public _prepareCell(cell: UITableViewCell, indexPath: NSIndexPath): number {
 		let retValue : number = super._prepareCell(cell, indexPath);
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.accessoryType = this.showDisclosureIndicator ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 		return retValue;	
 	}
     
